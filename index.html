@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | I Kadek Dendi Wahyu Dinata</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variabel Warna Tema Bali */
+        :root {
+            --bg-dark: #121212;        /* Latar belakang dasar sangat gelap */
+            --bg-card: rgba(36, 36, 36, 0.85); /* Kartu semi-transparan */
+            --text-light: #f5f5dc;     /* Teks krem (Off-white) */
+            --gold: #d4af37;           /* Emas Bali */
+            --terracotta: #c1543d;     /* Bata Candi Bali */
+            --tridatu-red: #c62828;
+            --tridatu-white: #ffffff;
+            --tridatu-black: #000000;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            
+            /* --- BACKGROUND TEMA PURA BALI DENGAN OPACITY YANG DISESUAIKAN --- */
+            /* Overlay gradient dibuat lebih transparan (0.65 dan 0.8) agar gambar lebih terlihat */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.8)), 
+                              url('https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=2000&auto=format&fit=crop'); 
+            background-attachment: fixed; /* Latar belakang tetap saat scroll */
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+        }
+
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--terracotta);
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative; 
+            z-index: 1;
+        }
+
+        /* Garis Tridatu Custom */
+        .tridatu-line {
+            height: 4px;
+            width: 100px;
+            background: linear-gradient(to right, var(--tridatu-red) 33%, var(--tridatu-white) 33%, var(--tridatu-white) 66%, var(--tridatu-black) 66%);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* Hero Section (Beranda) */
+        #beranda {
+            text-align: center;
+            padding-top: 150px;
+            padding-bottom: 120px;
+        }
+
+        #beranda .greeting {
+            font-size: 1.3rem;
+            color: var(--terracotta);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Tambahan shadow agar teks tetap terbaca */
+        }
+
+        #beranda h1 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            color: var(--gold);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
+        }
+
+        #beranda .tagline {
+            font-family: 'Poppins', sans-serif;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #e0e0e0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* Section Headings */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* Profil Section */
+        #profil p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        /* Keahlian Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .skill-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 4px solid var(--terracotta);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px); /* Efek blur ditambah agar teks di kartu aman dari corak gambar */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-top: 4px solid var(--gold);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--gold);
+        }
+
+        /* Portofolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .portfolio-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid var(--gold);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .portfolio-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-card ul {
+            margin-top: 15px;
+            list-style-type: none;
+        }
+
+        .portfolio-card ul li {
+            margin-bottom: 8px;
+        }
+
+        .portfolio-card ul li strong {
+            color: var(--terracotta);
+        }
+
+        /* Publikasi Section */
+        .publikasi-list {
+            max-width: 800px;
+            margin: 40px auto 0;
+            list-style-position: inside;
+        }
+
+        .publikasi-list li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: var(--bg-card);
+            border-radius: 5px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        /* Footer / Kontak */
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: rgba(13, 13, 13, 0.95);
+            border-top: 2px solid var(--gold);
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-links {
+            margin: 40px 0;
+        }
+
+        .contact-links a {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            border: 1px solid var(--gold);
+            padding: 12px 25px;
+            border-radius: 5px;
+            background-color: transparent;
+        }
+
+        .contact-links a:hover {
+            background-color: var(--gold);
+            color: var(--bg-dark);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #beranda h1 { font-size: 2.2rem; }
+            .section-title { font-size: 2rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .contact-links a { display: block; margin: 15px auto; max-width: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="beranda">
+        <div class="container">
+            <div class="greeting">Om Swastiastu</div>
+            <h1>I Kadek Dendi Wahyu Dinata</h1>
+            <div class="tridatu-line"></div>
+            <p class="tagline">Pengembang Teknologi | Spesialis Embedded Systems & Mikrokontroler | Inovator IoT</p>
+        </div>
+    </header>
+
+    <section id="profil">
+        <div class="container">
+            <h2 class="section-title">Profil</h2>
+            <div class="tridatu-line"></div>
+            <p>
+            <p>Saya adalah seorang Mahasiswa ITB Stikom Bali yang tertarik dengan teknologi dan sangat bersemangat dalam dunia <strong>sistem tersemat (<em>embedded systems</em>) dan mikrokontroler</strong>. Keahlian saya mencakup integrasi perangkat keras dan lunak, pemrograman tingkat rendah, dan eksplorasi IoT untuk menciptakan solusi cerdas yang efisien.</p>
+        </div>
+    </section>
+
+    <section id="keahlian">
+        <div class="container">
+            <h2 class="section-title">Keahlian</h2>
+            <div class="tridatu-line"></div>
+            <div class="skills-grid">
+                
+                <div class="skill-card">
+                    <h3>🌺 Firmware Development</h3>
+                    <p>Pemrograman tingkat rendah menggunakan bahasa C/C++ pada platform seperti Arduino, ESP32</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🌺 Hardware Interfacing</h3>
+                    <p>Integrasi dan akuisisi data dari berbagai sensor, aktuator, dan komponen elektronik menggunakan protokol I2C, SPI, dan UART.</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🌺 IoT & Connectivity</h3>
+                    <p>Membangun sistem Internet of Things yang terhubung menggunakan protokol HTTP dan optimalisasi konsumsi daya pada perangkat.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="keahlian">
+        <div class="container">
+            <h2 class="section-title">Pengalaman</h2>
+            <div class="tridatu-line"></div>
+            <div class="skills-grid">
+                
+                <div class="skill-card">
+                    <h3>🌺 PT. (Mitra Telemedia Manunggal) MTM Bali</h3>
+                    <p> Konfigurasi WiFi Maintenance Access Point & Router</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🌺 PT Center Computer</h3>
+                    <p>Service PC, Instalasi Jaringan, Maintenance CCTV</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="keahlian">
+        <div class="container">
+            <h2 class="section-title">Pendidikan</h2>
+            <div class="tridatu-line"></div>
+            <div class="skills-grid">
+                
+                <div class="skill-card">
+                    <h3>🌺 SMK NEGERI 1 DENPASAR</h3>
+                    <p>Jurusan Teknik Komputer Dan Jaringan</p>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>🌺 ITB STIKOM BALI</h3>
+                    <p>S1 Sistem Komputer</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="portofolio">
+        <div class="container">
+            <h2 class="section-title">Karya & Inovasi</h2>
+            <div class="tridatu-line"></div>
+            <div class="portfolio-grid">
+                
+                <div class="portfolio-card">
+                    <h3>1. Implementasi MPU6050 & ESP32 dengan FFT</h3>
+                    <p>Proyek eksperimental dan analitis yang memanfaatkan sensor gerak MPU6050 dan mikrokontroler ESP32. Sinyal yang ditangkap diolah menggunakan algoritma <em>Fast Fourier Transform</em> (FFT) secara <em>on-device</em>. Proyek ini diarahkan untuk solusi tingkat lanjut seperti <em>predictive maintenance</em> dan analisis biomedis.</p>
+                    <ul>
+                        <li><strong>Fokus:</strong> Mikrokontroler, Pemrosesan Sinyal Digital, IoT Hardware.</li>
+                    </ul>
+                </div>
+
+                <div class="portfolio-card">
+                    <h3>Coming Soon</h3>
+                    <p>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+
+    <footer id="kontak">
+        <div class="container">
+            <h2 class="section-title" style="font-size: 2rem;">🤝 Hubungi Saya</h2>
+            <p>Mari berkolaborasi untuk menciptakan inovasi teknologi mikrokontroler yang berdampak.</p>
+            
+            <div class="contact-links">
+                <a href="mailto:dendi.dinata@email.com">Email</a>
+                <a href="https://linkedin.com/in/ikadekdendi" target="_blank">LinkedIn</a>
+                <a href="https://github.com/ikadekdendi" target="_blank">GitHub</a>
+            </div>
+
+            <p style="margin-top: 40px; font-style: italic; color: var(--gold);">Matur Suksma! Terima kasih telah berkunjung.</p>
+            <p style="font-size: 0.9rem; margin-top: 10px; color: #666;">&copy; 2026 I Kadek Dendi Wahyu Dinata</p>
+        </div>
+    </footer>
+
+</body>
+</html>
